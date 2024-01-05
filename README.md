@@ -11,8 +11,12 @@ The Stripe Reporter is a script that generates an overview of Stripe payouts, in
 
 ## Requirements
 
-- Python 3.x
-- Stripe API credentials (API key)
+- Python >= 3.8 (`stripe` requres >= 3.6, `openpyxl` >= 3.6 and `python-dotenv` >= 3.8)
+- Stripe API credentials (API key). This must be a [**restricted** API key](https://stripe.com/docs/keys#create-restricted-api-secret-key) with the following permissions:
+    - Core resources – Balance: Read + read on transaction sources to allow for expansion
+    - Core resources – payouts: Read
+    - Checkout resources – Checkout Sessions: Read
+    - Payment Links resources – Payment Links: Read
 
 ## Installation
 
@@ -23,6 +27,9 @@ The Stripe Reporter is a script that generates an overview of Stripe payouts, in
 `pip install -r requirements.txt`
 
 3. Copy `.env.example` to `.env` and set up your Stripe API key.
+
+## Environment variables
+The application requires one environment variable: `STRIPE_API_KEY` containing the required Stripe API key
 
 ## Usage
 

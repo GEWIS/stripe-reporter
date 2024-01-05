@@ -250,6 +250,10 @@ def process_report_data(payout_id, json_file_path=None, print_json=False, save_t
 
 
 def main():
+    if not stripe.api_key.startsWith('rk_'):
+        raise ValueError("STRIPE_API_KEY must be set to a restricted API key. Check if the environment variable has been set and whether the key is a restricted API key")
+
+
     args = parse_arguments()
 
     if args.poll_stripe is not None:
